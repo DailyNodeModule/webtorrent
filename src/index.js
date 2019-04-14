@@ -3,11 +3,13 @@ const WebTorrent = require('webtorrent');
 
 const app = express();
 
+// Simple homepage to display the video.
 app.get('/', (req, res) => {
     res.set('content-type', 'text/html');
     res.send(`
         <html>
             <head>
+                <title>Big Buck Bunny</title>
                 <style type="text/css">
                     body {
                         display: flex;
@@ -36,12 +38,15 @@ app.get('/video', (req, res) => {
 
     const client = new WebTorrent();
 
+    // This can be any magnet URI, or a torrent file passed as text or a Buffer.
     const bigBuckBunnyURI = 'magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Fexplodie.org%3A6969&tr=udp%3A%2F%2Ftracker.empire-js.us%3A1337&ws=https%3A%2F%2Fwebtorrent.io%2Ftorrents%2F';
 
 
     client.add(bigBuckBunnyURI, function (torrent) {
+        // You can easily sort through files within the torrent.
         const file = torrent.files.filter((file) => file.name === 'Big Buck Bunny.mp4')[0];
         
+        // The files can be piped to other streams.
         file.createReadStream().pipe(res);
     });
 });

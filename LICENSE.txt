@@ -1,7 +1,3 @@
-This project references "Big Buck Bunny" a film produced by the Blender Foundation, which is licensed under the [Creative Commons Attribution 3.0 Unported](http://creativecommons.org/licenses/by/3.0/).
-
-All other content in this project has been released into the public domain under the terms outlined in the CC0 1.0 Universal Public Domain Dedication (see below) and is free of known copyright restrictions. 
-
 CC0 1.0 Universal
 
 Statement of Purpose
